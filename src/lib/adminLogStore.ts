@@ -23,7 +23,8 @@ export type ContactMessage = {
   status: 'new' | 'done';
 };
 
-const DATA_DIR = path.join(process.cwd(), 'data');
+const IS_VERCEL = process.env.VERCEL === '1';
+const DATA_DIR = IS_VERCEL ? '/tmp/argoseo-data' : path.join(process.cwd(), 'data');
 const LEADS_FILE = path.join(DATA_DIR, 'download-leads.json');
 const MESSAGES_FILE = path.join(DATA_DIR, 'contact-messages.json');
 const REDIS_LEADS_KEY = 'argos:admin-logs:download-leads';
@@ -66,16 +67,24 @@ async function writeJsonFile<T>(filePath: string, rows: T[]) {
 
 async function readRows<T>(redisKey: string, filePath: string): Promise<T[]> {
   if (redis) {
-    const rows = await redis.get<T[]>(redisKey);
-    return Array.isArray(rows) ? rows : [];
+    try {
+      const rows = await redis.get<T[]>(redisKey);
+      return Array.isArray(rows) ? rows : [];
+    } catch (error) {
+      console.error('[adminLogStore] Redis read failed, using file fallback.', error);
+    }
   }
   return readJsonFile<T>(filePath);
 }
 
 async function writeRows<T>(redisKey: string, filePath: string, rows: T[]) {
   if (redis) {
-    await redis.set(redisKey, rows);
-    return;
+    try {
+      await redis.set(redisKey, rows);
+      return;
+    } catch (error) {
+      console.error('[adminLogStore] Redis write failed, using file fallback.', error);
+    }
   }
   await writeJsonFile(filePath, rows);
 }

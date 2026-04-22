@@ -68,7 +68,10 @@ Notlar:
 Log verileri:
 
 - Production (Vercel): Upstash Redis'e yazılır (kalıcı).
-- Local/dev veya Redis env yoksa: `data/` klasörü altında JSON dosyalarına fallback yapılır.
+- Redis bağlantısı geçici hata verirse otomatik fallback devreye girer.
+- Local/dev veya Redis env yoksa: JSON dosyalarına fallback yapılır.
+  - Vercel runtime'da fallback yolu: `/tmp/argoseo-data`
+  - Local'de fallback yolu: `data/`
   - `data/download-leads.json`
   - `data/contact-messages.json`
 
