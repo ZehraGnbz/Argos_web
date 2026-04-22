@@ -12,7 +12,7 @@ const products = {
         {
             id: 'asl20',
             title: 'Lazer Mesafe Ölçer',
-            subtitle: 'ASL-20',
+            subtitle: 'ASL-40',
             description: '40 metre menzil ve ±1cm hassasiyetle yüksek doğruluklu lazer mesafe ölçer.',
             icon: Crosshair,
             specs: ['40m Menzil', '±1cm Hassasiyet', 'MIL-STD-810G'],
@@ -29,7 +29,7 @@ const products = {
         },
         {
             id: 'csal',
-            title: 'İHA Lazer Spot Tracker',
+            title: 'Lazer Spot Tracker',
             subtitle: 'CSAL',
             description: 'İHA sistemleri için hassas hedefleme özellikli lazer spot takip modülü.',
             icon: Radar,
@@ -41,7 +41,7 @@ const products = {
         {
             id: 'asl20',
             title: 'Laser Range Finder',
-            subtitle: 'ASL-20',
+            subtitle: 'ASL-40',
             description: 'High-precision laser range finder with 40-meter range and ±1cm accuracy.',
             icon: Crosshair,
             specs: ['40m Range', '±1cm Accuracy', 'MIL-STD-810G'],
@@ -58,7 +58,7 @@ const products = {
         },
         {
             id: 'csal',
-            title: 'Drone Laser Spot Tracker',
+            title: 'Laser Spot Tracker',
             subtitle: 'CSAL',
             description: 'Laser spot tracking module for UAV systems with precision targeting.',
             icon: Radar,

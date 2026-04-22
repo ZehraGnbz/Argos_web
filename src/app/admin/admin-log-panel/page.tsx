@@ -9,7 +9,7 @@ type MessageRow = LocalContactMessage;
 
 const productOptions = [
   { value: '', label: 'All products' },
-  { value: 'asl20', label: 'ASL-20' },
+  { value: 'asl20', label: 'ASL-40' },
   { value: 'csal', label: 'C-SAL' },
   { value: 's-battery', label: 'S-BATTERY' },
 ];
@@ -55,7 +55,8 @@ export default function DownloadLeadsAdminPage()
       const messageParams = new URLSearchParams(queryString);
       messageParams.set('status', messageStatus);
       const messagesResponse = await fetch(`/api/admin-logs/messages?${messageParams.toString()}`);
-      if (!leadsResponse.ok || !messagesResponse.ok) {
+      if (!leadsResponse.ok || !messagesResponse.ok)
+      {
         throw new Error('Failed to fetch admin logs.');
       }
 
@@ -157,13 +158,15 @@ export default function DownloadLeadsAdminPage()
         sourcePath: editLead.sourcePath.trim() || '/',
       }),
     })
-      .then((response) => {
+      .then((response) =>
+      {
         if (!response.ok) throw new Error('Failed to update lead.');
         setEditingLeadId(null);
         setError('');
         fetchRows();
       })
-      .catch((err) => {
+      .catch((err) =>
+      {
         setError(err instanceof Error ? err.message : 'Failed to update lead.');
       });
   };
@@ -171,12 +174,14 @@ export default function DownloadLeadsAdminPage()
   const removeLead = (id: string) =>
   {
     fetch(`/api/admin-logs/leads/${id}`, { method: 'DELETE' })
-      .then((response) => {
+      .then((response) =>
+      {
         if (!response.ok) throw new Error('Failed to delete lead.');
         if (editingLeadId === id) setEditingLeadId(null);
         fetchRows();
       })
-      .catch((err) => {
+      .catch((err) =>
+      {
         setError(err instanceof Error ? err.message : 'Failed to delete lead.');
       });
   };
@@ -188,11 +193,13 @@ export default function DownloadLeadsAdminPage()
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status }),
     })
-      .then((response) => {
+      .then((response) =>
+      {
         if (!response.ok) throw new Error('Failed to update message.');
         fetchRows();
       })
-      .catch((err) => {
+      .catch((err) =>
+      {
         setError(err instanceof Error ? err.message : 'Failed to update message.');
       });
   };
@@ -200,11 +207,13 @@ export default function DownloadLeadsAdminPage()
   const removeMessage = (id: string) =>
   {
     fetch(`/api/admin-logs/messages/${id}`, { method: 'DELETE' })
-      .then((response) => {
+      .then((response) =>
+      {
         if (!response.ok) throw new Error('Failed to delete message.');
         fetchRows();
       })
-      .catch((err) => {
+      .catch((err) =>
+      {
         setError(err instanceof Error ? err.message : 'Failed to delete message.');
       });
   };

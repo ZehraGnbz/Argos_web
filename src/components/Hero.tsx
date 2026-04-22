@@ -9,7 +9,7 @@ const content = {
     tr: {
         titleStart: 'Elektro-Optik',
         titleHighlight: ' Sistem Çözümleri',
-        subtitle: 'Lazer mesafe ölçerler, hedef takip sistemleri ve ileri savunma teknolojileriyle sektörde fark yaratıyoruz.',
+        subtitle: 'Lazer Yakınlık Sistemleri, Arayıcı Başlık ve Mesafe Ölçer Çözümleri ile İleri Savunma Teknolojilerinde fark yaratıyoruz.',
         ctaPrimary: 'Ürünlerimizi Keşfedin',
         ctaSecondary: 'İletişime Geçin',
         scroll: 'Keşfetmeye Başla',
@@ -17,7 +17,7 @@ const content = {
     en: {
         titleStart: 'Electro-Optical',
         titleHighlight: ' System Solutions',
-        subtitle: 'We make a difference with laser range finders, target tracking systems, and advanced defense technologies.',
+        subtitle: 'We make a difference through our Laser Proximity, Seeker, and Rangefinder Systems, as well as Advanced Defence Technologies.',
         ctaPrimary: 'Explore Our Products',
         ctaSecondary: 'Get in Touch',
         scroll: 'Start Exploring',

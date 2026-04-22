@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import
     {
         ArrowLeft,
@@ -29,6 +30,8 @@ import EmailGatedDownloadButton from '@/components/EmailGatedDownloadButton';
 export default function CSALPageClient()
 {
     const { language } = useLanguage();
+    const [activeSlide, setActiveSlide] = useState(0);
+    const [tilt, setTilt] = useState({ x: 0, y: 0 });
     const t = language === 'tr'
         ? {
             home: 'Ana Sayfa',
@@ -178,6 +181,27 @@ export default function CSALPageClient()
             { icon: Bot, title: 'UGV Systems' },
             { icon: Crosshair, title: 'Terminal Navigation' }
         ];
+    const sliderImages = [
+        { src: '/products/csal-overview.png', alt: 'ARGOS C-SAL Overview' },
+        { src: '/products/csal-datasheet.png', alt: 'ARGOS C-SAL Datasheet' },
+    ];
+
+    const handleSliderMouseMove = (event: React.MouseEvent<HTMLDivElement>) =>
+    {
+        const rect = event.currentTarget.getBoundingClientRect();
+        const relativeX = (event.clientX - rect.left) / rect.width;
+        const relativeY = (event.clientY - rect.top) / rect.height;
+        setActiveSlide(relativeX >= 0.5 ? 1 : 0);
+        setTilt({
+            x: (0.5 - relativeY) * 8,
+            y: (relativeX - 0.5) * 12,
+        });
+    };
+
+    const handleSliderMouseLeave = () =>
+    {
+        setTilt({ x: 0, y: 0 });
+    };
 
     return (
         <div className={styles.productPage}>
@@ -245,15 +269,44 @@ export default function CSALPageClient()
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
                             <div className={styles.imageGlow}></div>
-                            <div className={styles.imageWrapper}>
-                                <Image
-                                    src="/products/csal-overview.png"
-                                    alt="ARGOS C-SAL Laser Spot Tracker"
-                                    width={500}
-                                    height={650}
-                                    style={{ objectFit: 'cover' }}
-                                    priority
-                                />
+                            <div
+                                className={styles.imageWrapper}
+                                onMouseMove={handleSliderMouseMove}
+                                onMouseLeave={handleSliderMouseLeave}
+                            >
+                                <motion.div
+                                    className={styles.heroSliderTrack}
+                                    animate={{
+                                        x: `-${activeSlide * 100}%`,
+                                        rotateX: tilt.x,
+                                        rotateY: tilt.y,
+                                    }}
+                                    transition={{ type: 'spring', stiffness: 160, damping: 18, mass: 0.7 }}
+                                >
+                                    {sliderImages.map((item) => (
+                                        <div key={item.src} className={styles.heroSlide}>
+                                            <Image
+                                                src={item.src}
+                                                alt={item.alt}
+                                                width={500}
+                                                height={650}
+                                                style={{ objectFit: 'cover' }}
+                                                priority
+                                            />
+                                        </div>
+                                    ))}
+                                </motion.div>
+                                <div className={styles.sliderDots}>
+                                    {sliderImages.map((item, index) => (
+                                        <button
+                                            key={item.src}
+                                            type="button"
+                                            className={`${styles.sliderDot} ${activeSlide === index ? styles.sliderDotActive : ''}`}
+                                            onClick={() => setActiveSlide(index)}
+                                            aria-label={`Go to slide ${index + 1}`}
+                                        />
+                                    ))}
+                                </div>
                             </div>
                         </motion.div>
                     </div>

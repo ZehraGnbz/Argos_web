@@ -97,7 +97,7 @@ export default function Footer()
                         <ul className={styles.links}>
                             <li><Link href="/urunler/asl20">Laser Range Finder</Link></li>
                             <li><Link href="/urunler/s-battery">Hybrid Battery Pack</Link></li>
-                            <li><Link href="/urunler/csal">Drone Laser Spot Tracker</Link></li>
+                            <li><Link href="/urunler/csal">Laser Spot Tracker</Link></li>
                         </ul>
                     </div>
 

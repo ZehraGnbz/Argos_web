@@ -44,7 +44,7 @@ export default function ASL20PageClient()
             environmental: 'Güç & Çevresel',
             appBadge: 'Uygulama Alanları',
             appTitle: 'Kullanım Senaryoları',
-            ctaTitle: 'ASL-20 ile Projenizi Hayata Geçirin',
+            ctaTitle: 'ASL-40 ile Projenizi Hayata Geçirin',
             ctaDesc: 'Teknik ekibimiz, ürün entegrasyonu ve özelleştirme konusunda size destek olmaya hazır.',
             contact: 'İletişime Geçin',
             other: 'Diğer Ürünler',
@@ -64,7 +64,7 @@ export default function ASL20PageClient()
             environmental: 'Power & Environmental',
             appBadge: 'Applications',
             appTitle: 'Use Cases',
-            ctaTitle: 'Bring Your Project to Life with ASL-20',
+            ctaTitle: 'Bring Your Project to Life with ASL-40',
             ctaDesc: 'Our technical team is ready to support integration and customization.',
             contact: 'Contact Us',
             other: 'Other Products',
@@ -88,11 +88,11 @@ export default function ASL20PageClient()
         ];
     const overviewParagraphs = language === 'tr'
         ? [
-            'ARGOS ASL-20, kompakt yapısı ve yüksek örnekleme kabiliyeti sayesinde kısa menzilde hassas mesafe ölçümü gerektiren sistemler için geliştirilmiştir.',
+            'ARGOS ASL-40, kompakt yapısı ve yüksek örnekleme kabiliyeti sayesinde kısa menzilde hassas mesafe ölçümü gerektiren sistemler için geliştirilmiştir.',
             'FPGA tabanlı gerçek zamanlı işleme mimarisi, düşük gecikme ile kararlı veri üretir. UART arayüzü ile mevcut aviyonik, otonom sürüş ve robotik kontrol birimlerine hızlı entegrasyon sağlar.',
         ]
         : [
-            'ARGOS ASL-20 is developed for systems that require precise short-range distance measurement with a compact footprint and high sampling capability.',
+            'ARGOS ASL-40 is developed for systems that require precise short-range distance measurement with a compact footprint and high sampling capability.',
             'Its FPGA-based real-time processing architecture delivers stable output with low latency. The UART interface enables rapid integration into existing avionics, autonomous driving, and robotics control units.',
         ];
 
@@ -180,7 +180,7 @@ export default function ASL20PageClient()
                         <ChevronRight size={16} />
                         <Link href="/#products">{t.products}</Link>
                         <ChevronRight size={16} />
-                        <span className={styles.breadcrumbCurrent}>ASL-20</span>
+                        <span className={styles.breadcrumbCurrent}>ASL-40</span>
                     </motion.nav>
 
                     <div className={styles.heroContent}>
@@ -192,12 +192,12 @@ export default function ASL20PageClient()
                             transition={{ duration: 0.6 }}
                         >
                             <span className={styles.badge}>{language === 'tr' ? 'Lazer Mesafe Ölçer' : 'Laser Range Fınder'}</span>
-                            <h1 className={styles.title}>ARGOS ASL-20</h1>
+                            <h1 className={styles.title}>ARGOS ASL-40</h1>
                             <p className={styles.subtitle}>{language === 'tr' ? 'Yüksek Hızlı Kısa Menzilli Lazer Modülü' : 'High-Speed Short-Range Laser Module'}</p>
                             <p className={styles.description}>
                                 {language === 'tr'
-                                    ? 'ARGOS ASL-20, yüksek hızlı kısa menzilli bir lazer mesafe ölçüm modülüdür. 100 kHz\'e varan örnekleme hızı, düşük gecikmeli FPGA işleme ve ultra kompakt formuyla İHA, otonom araç ve robotik sistemler için ideal bir çözümdür.'
-                                    : 'ARGOS ASL-20 is a high-speed short-range laser range measurement module. With up to 100 kHz sampling rate, low-latency FPGA processing, and an ultra-compact form, it is an ideal solution for UAV, autonomous vehicle, and robotic systems.'}
+                                    ? 'ARGOS ASL-40, yüksek hızlı kısa menzilli bir lazer mesafe ölçüm modülüdür. 100 kHz\'e varan örnekleme hızı, düşük gecikmeli FPGA işleme ve ultra kompakt formuyla İHA, otonom araç ve robotik sistemler için ideal bir çözümdür.'
+                                    : 'ARGOS ASL-40 is a high-speed short-range laser range measurement module. With up to 100 kHz sampling rate, low-latency FPGA processing, and an ultra-compact form, it is an ideal solution for UAV, autonomous vehicle, and robotic systems.'}
                             </p>
                             <div className={styles.heroButtons}>
                                 <Link href="/#contact" className={styles.btnPrimary}>
@@ -206,10 +206,10 @@ export default function ASL20PageClient()
                                 </Link>
                                 <EmailGatedDownloadButton
                                     language={language}
-                                    fileUrl="/products/asl20-datasheet.png"
+                                    fileUrl="/products/asl40-datasheet.png"
                                     productKey="asl20"
-                                    productName="ASL-20"
-                                    fileName="argos-asl20-datasheet.png"
+                                    productName="ASL-40"
+                                    fileName="argos-asl40-datasheet.png"
                                     className={styles.btnSecondary}
                                 >
                                     <Download size={20} />
@@ -228,8 +228,8 @@ export default function ASL20PageClient()
                             <div className={styles.imageGlow}></div>
                             <div className={styles.imageWrapper}>
                                 <Image
-                                    src="/products/asl20-datasheet.png"
-                                    alt="ARGOS ASL-20 Laser Range Finder"
+                                    src="/products/asl40-datasheet.png"
+                                    alt="ARGOS ASL-40 Laser Range Finder"
                                     width={500}
                                     height={650}
                                     style={{ objectFit: 'cover' }}
@@ -300,8 +300,8 @@ export default function ASL20PageClient()
                             viewport={{ once: true }}
                         >
                             <Image
-                                src="/products/asl20-datasheet.png"
-                                alt="ASL-20 Product Overview"
+                                src="/products/asl40-datasheet.png"
+                                alt="ASL-40 Product Overview"
                                 width={500}
                                 height={700}
                                 style={{ objectFit: 'contain' }}

@@ -6,7 +6,7 @@ Proje `Next.js (App Router)` ile geliştirilmiştir.
 ## Özellikler
 
 - Çok dilli içerik (TR/EN)
-- Ürün detay sayfaları (`ASL-20`, `S-BATTERY`, `C-SAL`)
+- Ürün detay sayfaları (`ASL-40`, `S-BATTERY`, `C-SAL`)
 - Datasheet indirme öncesi e-posta toplama
 - Contact bölümünde "Leave Us a Message" akışı
 - Admin log paneli (`/admin/admin-log-panel`)

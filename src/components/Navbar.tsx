@@ -28,12 +28,12 @@ const navItems = {
 
 const productItems = {
     tr: [
-        { name: 'ASL-20', href: '/urunler/asl20' },
+        { name: 'ASL-40', href: '/urunler/asl20' },
         { name: 'S-BATTERY', href: '/urunler/s-battery' },
         { name: 'C-SAL', href: '/urunler/csal' },
     ],
     en: [
-        { name: 'ASL-20', href: '/urunler/asl20' },
+        { name: 'ASL-40', href: '/urunler/asl20' },
         { name: 'S-BATTERY', href: '/urunler/s-battery' },
         { name: 'C-SAL', href: '/urunler/csal' },
     ],

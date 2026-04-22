@@ -162,6 +162,7 @@
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    perspective: 1200px;
 }
 
 .imageWrapper img {
@@ -169,6 +170,39 @@
     width: 100%;
     height: auto;
     border-radius: 20px;
+}
+
+.heroSliderTrack {
+    display: flex;
+    width: 100%;
+    transform-style: preserve-3d;
+}
+
+.heroSlide {
+    min-width: 100%;
+}
+
+.sliderDots {
+    position: absolute;
+    left: 50%;
+    bottom: 12px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 2;
+}
+
+.sliderDot {
+    width: 9px;
+    height: 9px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.45);
+}
+
+.sliderDotActive {
+    width: 24px;
+    background: rgba(255, 255, 255, 0.92);
 }
 
 .imageGlow {
