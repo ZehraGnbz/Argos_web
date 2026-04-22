@@ -35,19 +35,22 @@ Uygulama varsayılan olarak `http://localhost:3000` adresinde çalışır.
 
 ## Environment Variables
 
-`admin` panel erişimi ve analitik için aşağıdaki değişkenleri tanımlayabilirsiniz:
+`admin` panel erişimi, analitik ve production log saklama için aşağıdaki değişkenleri tanımlayabilirsiniz:
 
 ```bash
 ADMIN_PANEL_USERNAME=your_admin_username
 ADMIN_PANEL_PASSWORD=your_admin_password
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your_verification_code
+UPSTASH_REDIS_REST_URL=your_upstash_redis_rest_url
+UPSTASH_REDIS_REST_TOKEN=your_upstash_redis_rest_token
 ```
 
 Notlar:
 
 - `ADMIN_PANEL_USERNAME/PASSWORD` tanımlıysa `/admin/admin-log-panel` ve `/api/admin-logs/*` Basic Auth ile korunur.
 - Tanımlı değilse admin erişimi açık kalır (dev/test kolaylığı).
+- Vercel production için logların kalıcı olması adına `UPSTASH_REDIS_REST_URL` ve `UPSTASH_REDIS_REST_TOKEN` tanımlayın.
 
 ## API Uçları
 
@@ -62,10 +65,12 @@ Notlar:
 
 ## Veri Saklama
 
-Log verileri sunucu tarafında `data/` klasörü altında JSON dosyalarına yazılır:
+Log verileri:
 
-- `data/download-leads.json`
-- `data/contact-messages.json`
+- Production (Vercel): Upstash Redis'e yazılır (kalıcı).
+- Local/dev veya Redis env yoksa: `data/` klasörü altında JSON dosyalarına fallback yapılır.
+  - `data/download-leads.json`
+  - `data/contact-messages.json`
 
 ## Build ve Production
 

@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@upstash/redis": "^1.37.0",
     "framer-motion": "^12.26.2",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.562.0",

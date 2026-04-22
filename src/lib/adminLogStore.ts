@@ -1,6 +1,7 @@
+import { randomUUID } from 'crypto';
 import { mkdir, readFile, writeFile } from 'fs/promises';
 import path from 'path';
-import { randomUUID } from 'crypto';
+import { Redis } from '@upstash/redis';
 
 export type DownloadLead = {
   id: string;
@@ -25,6 +26,13 @@ export type ContactMessage = {
 const DATA_DIR = path.join(process.cwd(), 'data');
 const LEADS_FILE = path.join(DATA_DIR, 'download-leads.json');
 const MESSAGES_FILE = path.join(DATA_DIR, 'contact-messages.json');
+const REDIS_LEADS_KEY = 'argos:admin-logs:download-leads';
+const REDIS_MESSAGES_KEY = 'argos:admin-logs:contact-messages';
+
+const hasRedisEnv = Boolean(
+  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
+);
+const redis = hasRedisEnv ? Redis.fromEnv() : null;
 
 async function ensureStore() {
   await mkdir(DATA_DIR, { recursive: true });
@@ -56,8 +64,24 @@ async function writeJsonFile<T>(filePath: string, rows: T[]) {
   await writeFile(filePath, JSON.stringify(rows, null, 2), 'utf-8');
 }
 
+async function readRows<T>(redisKey: string, filePath: string): Promise<T[]> {
+  if (redis) {
+    const rows = await redis.get<T[]>(redisKey);
+    return Array.isArray(rows) ? rows : [];
+  }
+  return readJsonFile<T>(filePath);
+}
+
+async function writeRows<T>(redisKey: string, filePath: string, rows: T[]) {
+  if (redis) {
+    await redis.set(redisKey, rows);
+    return;
+  }
+  await writeJsonFile(filePath, rows);
+}
+
 export async function getDownloadLeads(): Promise<DownloadLead[]> {
-  const rows = await readJsonFile<DownloadLead>(LEADS_FILE);
+  const rows = await readRows<DownloadLead>(REDIS_LEADS_KEY, LEADS_FILE);
   return rows.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 }
 
@@ -69,7 +93,7 @@ export async function addDownloadLead(payload: Omit<DownloadLead, 'id' | 'create
     ...payload,
   };
   rows.unshift(next);
-  await writeJsonFile(LEADS_FILE, rows);
+  await writeRows(REDIS_LEADS_KEY, LEADS_FILE, rows);
   return next;
 }
 
@@ -78,7 +102,7 @@ export async function updateDownloadLead(id: string, updates: Partial<Omit<Downl
   const index = rows.findIndex((row) => row.id === id);
   if (index < 0) return false;
   rows[index] = { ...rows[index], ...updates };
-  await writeJsonFile(LEADS_FILE, rows);
+  await writeRows(REDIS_LEADS_KEY, LEADS_FILE, rows);
   return true;
 }
 
@@ -86,12 +110,12 @@ export async function removeDownloadLead(id: string) {
   const rows = await getDownloadLeads();
   const next = rows.filter((row) => row.id !== id);
   if (next.length === rows.length) return false;
-  await writeJsonFile(LEADS_FILE, next);
+  await writeRows(REDIS_LEADS_KEY, LEADS_FILE, next);
   return true;
 }
 
 export async function getContactMessages(): Promise<ContactMessage[]> {
-  const rows = await readJsonFile<ContactMessage>(MESSAGES_FILE);
+  const rows = await readRows<ContactMessage>(REDIS_MESSAGES_KEY, MESSAGES_FILE);
   return rows.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 }
 
@@ -104,7 +128,7 @@ export async function addContactMessage(payload: Omit<ContactMessage, 'id' | 'cr
     ...payload,
   };
   rows.unshift(next);
-  await writeJsonFile(MESSAGES_FILE, rows);
+  await writeRows(REDIS_MESSAGES_KEY, MESSAGES_FILE, rows);
   return next;
 }
 
@@ -113,7 +137,7 @@ export async function updateContactMessage(id: string, updates: Partial<Omit<Con
   const index = rows.findIndex((row) => row.id === id);
   if (index < 0) return false;
   rows[index] = { ...rows[index], ...updates };
-  await writeJsonFile(MESSAGES_FILE, rows);
+  await writeRows(REDIS_MESSAGES_KEY, MESSAGES_FILE, rows);
   return true;
 }
 
@@ -121,6 +145,6 @@ export async function removeContactMessage(id: string) {
   const rows = await getContactMessages();
   const next = rows.filter((row) => row.id !== id);
   if (next.length === rows.length) return false;
-  await writeJsonFile(MESSAGES_FILE, next);
+  await writeRows(REDIS_MESSAGES_KEY, MESSAGES_FILE, next);
   return true;
 }
