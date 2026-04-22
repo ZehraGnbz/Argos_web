@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Argos Web
 
-## Getting Started
+Argos Elektro-Optik kurumsal web sitesi.  
+Proje `Next.js (App Router)` ile geliştirilmiştir.
 
-First, run the development server:
+## Özellikler
+
+- Çok dilli içerik (TR/EN)
+- Ürün detay sayfaları (`ASL-20`, `S-BATTERY`, `C-SAL`)
+- Datasheet indirme öncesi e-posta toplama
+- Contact bölümünde "Leave Us a Message" akışı
+- Admin log paneli (`/admin/admin-log-panel`)
+  - Lead/message listeleme
+  - Filtreleme
+  - Düzenleme/silme
+  - CSV export
+- SEO metadata + JSON-LD + sitemap + robots
+
+## Teknoloji
+
+- `next@16`
+- `react@19`
+- `typescript`
+- `framer-motion`
+- `lucide-react`
+
+## Kurulum
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Uygulama varsayılan olarak `http://localhost:3000` adresinde çalışır.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`admin` panel erişimi ve analitik için aşağıdaki değişkenleri tanımlayabilirsiniz:
 
-## Learn More
+```bash
+ADMIN_PANEL_USERNAME=your_admin_username
+ADMIN_PANEL_PASSWORD=your_admin_password
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your_verification_code
+```
 
-To learn more about Next.js, take a look at the following resources:
+Notlar:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `ADMIN_PANEL_USERNAME/PASSWORD` tanımlıysa `/admin/admin-log-panel` ve `/api/admin-logs/*` Basic Auth ile korunur.
+- Tanımlı değilse admin erişimi açık kalır (dev/test kolaylığı).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## API Uçları
 
-## Deploy on Vercel
+- `POST /api/download-leads`
+- `POST /api/contact-messages`
+- `GET /api/admin-logs/leads`
+- `PUT /api/admin-logs/leads/:id`
+- `DELETE /api/admin-logs/leads/:id`
+- `GET /api/admin-logs/messages`
+- `PUT /api/admin-logs/messages/:id`
+- `DELETE /api/admin-logs/messages/:id`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Veri Saklama
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Log verileri sunucu tarafında `data/` klasörü altında JSON dosyalarına yazılır:
+
+- `data/download-leads.json`
+- `data/contact-messages.json`
+
+## Build ve Production
+
+```bash
+npm run build
+npm run start
+```
+
+## Deploy
+
+Önerilen: Vercel.
+
+1. Repo'yu GitHub'a push edin
+2. Vercel'de projeyi import edin
+3. Environment variables tanımlayın
+4. Domain ve DNS yönlendirmesini tamamlayın
+
+## Proje Yapısı (kısa)
+
+- `src/app/` -> sayfalar, API route'lar
+- `src/components/` -> UI bileşenleri
+- `src/context/` -> dil yönetimi
+- `src/lib/` -> log store ve yardımcı modüller
+- `public/` -> statik varlıklar
