@@ -1,0 +1,229 @@
+.about {
+    position: relative;
+    padding: 6rem 0;
+    background: var(--gradient-section);
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(74, 144, 184, 0.1);
+    color: var(--accent-blue);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+}
+
+.title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.highlight {
+    background: linear-gradient(135deg, var(--tech-cyan), var(--accent-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: clamp(0.98rem, 2.2vw, 1.1rem);
+    color: var(--dark-gray);
+    line-height: 1.7;
+}
+
+/* Features */
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.featureCard {
+    background: linear-gradient(160deg, rgba(195, 211, 220, 0.68) 0%, rgba(171, 194, 206, 0.54) 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 6px 17px rgba(19, 45, 63, 0.14);
+    border: 1px solid rgba(53, 81, 99, 0.22);
+    backdrop-filter: blur(5px);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.featureCard:hover {
+    background: linear-gradient(160deg, rgba(187, 207, 218, 0.74) 0%, rgba(160, 188, 202, 0.61) 100%);
+    box-shadow: 0 14px 27px rgba(13, 36, 54, 0.22);
+    border-color: rgba(79, 136, 159, 0.42);
+}
+
+.featureIcon {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.featureTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 0.75rem;
+}
+
+.featureDescription {
+    font-size: 0.95rem;
+    color: var(--dark-gray);
+    line-height: 1.6;
+}
+
+/* Stats Section */
+.statsSection {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+    border-radius: 24px;
+    padding: 3rem;
+    margin-bottom: 4rem;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.statItem {
+    text-align: center;
+}
+
+.statValue {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--bright-cyan);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.statUnit {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.statLabel {
+    font-size: 0.9rem;
+    color: var(--medium-gray);
+}
+
+/* Capabilities */
+.capabilities {
+    display: block;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.capContent {
+    padding-right: 0;
+}
+
+.capTitle {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+}
+
+.capList {
+    list-style: none;
+}
+
+.capItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    color: var(--dark-gray);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.capItem:last-child {
+    border-bottom: none;
+}
+
+.capIcon {
+    color: var(--tech-cyan);
+    flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .capContent {
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .statValue {
+        font-size: 2rem;
+    }
+
+    .about {
+        padding: 4rem 0;
+    }
+
+    .header {
+        margin-bottom: 3rem;
+    }
+
+    .featureCard {
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+
+    .capTitle {
+        font-size: 1.45rem;
+    }
+
+    .capItem {
+        font-size: 0.94rem;
+    }
+}

@@ -1,0 +1,240 @@
+.contact {
+    position: relative;
+    padding: 6rem 0;
+    background: var(--gradient-dark);
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+}
+
+.title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.highlight {
+    background: linear-gradient(135deg, var(--tech-cyan), var(--bright-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: clamp(0.98rem, 2.2vw, 1.1rem);
+    color: var(--medium-gray);
+    line-height: 1.7;
+}
+
+/* Content Layout */
+.content {
+    display: block;
+}
+
+/* Address + Side cards layout */
+.contactLayout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(240px, 0.9fr);
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.sideCards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+/* Contact Info */
+.infoCard {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.0315);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    transition: background 0.32s ease, border-color 0.32s ease, transform 0.32s ease;
+}
+
+.addressCard {
+    align-items: flex-start;
+    height: 100%;
+}
+
+.addressContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.sideInfoCard {
+    flex: 1;
+}
+
+.messageCard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.messageDesc {
+    font-size: 0.84rem;
+    color: var(--medium-gray);
+    line-height: 1.5;
+}
+
+.messageInput,
+.messageTextarea {
+    width: 100%;
+    border: 1px solid rgba(120, 167, 187, 0.45);
+    background: rgba(8, 20, 32, 0.72);
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 0.65rem 0.75rem;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.messageInput:focus,
+.messageTextarea:focus {
+    border-color: rgba(120, 167, 187, 0.85);
+    box-shadow: 0 0 0 2px rgba(120, 167, 187, 0.18);
+}
+
+.messageTextarea {
+    resize: vertical;
+    min-height: 96px;
+}
+
+.messageButton {
+    border: 0;
+    border-radius: 10px;
+    padding: 0.62rem 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #4f889f, #2c5e79);
+}
+
+.messageButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.formError {
+    color: #ffb3b3;
+    font-size: 0.8rem;
+}
+
+.formSuccess {
+    color: #c9f3d2;
+    font-size: 0.8rem;
+}
+
+.infoCard:hover {
+    background: rgba(255, 255, 255, 0.0495);
+    border-color: rgba(94, 179, 228, 0.24);
+    transform: translateY(-2px);
+}
+
+.infoIcon {
+    width: 50px;
+    height: 50px;
+    background: rgba(94, 179, 228, 0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bright-cyan);
+    flex-shrink: 0;
+}
+
+.infoTitle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--medium-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.infoText {
+    font-size: 0.95rem;
+    color: var(--white);
+    line-height: 1.6;
+}
+
+.infoLink {
+    font-size: 1rem;
+    color: var(--bright-cyan);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.infoLink:hover {
+    color: var(--white);
+}
+
+/* Map Wrapper */
+.mapWrapper {
+    margin-top: 1rem;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: 280px;
+    flex: 1;
+    display: flex;
+}
+
+/* Responsive */
+@media (max-width: 920px) {
+    .contactLayout {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .sideCards {
+        grid-template-columns: 1fr 1fr;
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 600px) {
+    .sideCards {
+        flex-direction: column;
+    }
+
+    .contact {
+        padding: 4rem 0;
+    }
+
+    .header {
+        margin-bottom: 3rem;
+    }
+
+    .infoCard {
+        padding: 1.1rem;
+        border-radius: 14px;
+    }
+
+    .mapWrapper {
+        border-radius: 14px;
+        min-height: 240px;
+    }
+}

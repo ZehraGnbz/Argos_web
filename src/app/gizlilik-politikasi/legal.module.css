@@ -1,0 +1,128 @@
+.legal {
+    padding: 8rem 0 4rem;
+    background: var(--gradient-dark);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.legal::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 10% 0%, rgba(94, 179, 228, 0.12), transparent 45%);
+    pointer-events: none;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1.4rem;
+    line-height: 1.2;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(135deg, var(--white), var(--bright-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section {
+    margin-bottom: 1rem;
+    background: var(--gradient-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 1.15rem 1.2rem;
+    box-shadow: var(--shadow-md);
+}
+
+.section h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(94, 179, 228, 0.22);
+}
+
+.section h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--bright-cyan);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.section p {
+    font-size: 0.95rem;
+    color: var(--medium-gray);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+}
+
+.section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0;
+}
+
+.section ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--medium-gray);
+    line-height: 1.7;
+}
+
+.section ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--tech-cyan);
+}
+
+.section a {
+    color: var(--bright-cyan);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+}
+
+.section a:hover {
+    color: var(--white);
+}
+
+.infoBox {
+    background: rgba(94, 179, 228, 0.11);
+    border: 1px solid rgba(94, 179, 228, 0.28);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin: 1rem 0;
+}
+
+.infoBox p {
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .legal {
+        padding: 6rem 0 3rem;
+    }
+}

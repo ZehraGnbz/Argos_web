@@ -1,0 +1,123 @@
+.downloadGateButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 10, 18, 0.72);
+  backdrop-filter: blur(4px);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 2200;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 14px;
+  background: linear-gradient(160deg, rgba(15, 32, 46, 0.98) 0%, rgba(21, 46, 62, 0.98) 100%);
+  border: 1px solid rgba(120, 167, 187, 0.35);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.38);
+  padding: 1.2rem;
+}
+
+.title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  color: #dbe5eb;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-bottom: 0.9rem;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid rgba(120, 167, 187, 0.45);
+  background: rgba(8, 20, 32, 0.72);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 0.72rem 0.85rem;
+  outline: none;
+}
+
+.input:focus {
+  border-color: rgba(120, 167, 187, 0.85);
+  box-shadow: 0 0 0 2px rgba(120, 167, 187, 0.18);
+}
+
+.error {
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  color: #ffb3b3;
+}
+
+.status {
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  color: #d7e9f2;
+}
+
+.fallbackActions {
+  margin-top: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.retryButton {
+  border: 0;
+  border-radius: 8px;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(79, 136, 159, 0.75);
+}
+
+.contactLink {
+  font-size: 0.82rem;
+  color: #dbe5eb;
+  text-decoration: underline;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.cancelButton,
+.downloadButton {
+  border: 0;
+  border-radius: 10px;
+  padding: 0.58rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancelButton:disabled,
+.downloadButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.cancelButton {
+  color: #dbe5eb;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.downloadButton {
+  color: #ffffff;
+  background: linear-gradient(135deg, #4f889f, #2c5e79);
+}
