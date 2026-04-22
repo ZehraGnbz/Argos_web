@@ -95,7 +95,7 @@ export default function Footer()
                     <div className={`${styles.column} ${styles.panel}`}>
                         <h4 className={styles.columnTitle}>{t.products}</h4>
                         <ul className={styles.links}>
-                            <li><Link href="/urunler/asl20">Laser Range Finder</Link></li>
+                            <li><Link href="/urunler/asl40">Laser Range Finder</Link></li>
                             <li><Link href="/urunler/s-battery">Hybrid Battery Pack</Link></li>
                             <li><Link href="/urunler/csal">Laser Spot Tracker</Link></li>
                         </ul>

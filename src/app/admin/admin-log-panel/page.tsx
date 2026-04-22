@@ -9,7 +9,7 @@ type MessageRow = LocalContactMessage;
 
 const productOptions = [
   { value: '', label: 'All products' },
-  { value: 'asl20', label: 'ASL-40' },
+  { value: 'asl40', label: 'ASL-40' },
   { value: 'csal', label: 'C-SAL' },
   { value: 's-battery', label: 'S-BATTERY' },
 ];

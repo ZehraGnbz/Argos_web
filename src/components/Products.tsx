@@ -10,7 +10,7 @@ import { useLanguage } from '@/context/LanguageContext';
 const products = {
     tr: [
         {
-            id: 'asl20',
+            id: 'asl40',
             title: 'Lazer Mesafe Ölçer',
             subtitle: 'ASL-40',
             description: '40 metre menzil ve ±1cm hassasiyetle yüksek doğruluklu lazer mesafe ölçer.',
@@ -39,7 +39,7 @@ const products = {
     ],
     en: [
         {
-            id: 'asl20',
+            id: 'asl40',
             title: 'Laser Range Finder',
             subtitle: 'ASL-40',
             description: 'High-precision laser range finder with 40-meter range and ±1cm accuracy.',

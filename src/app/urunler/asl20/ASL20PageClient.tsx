@@ -25,7 +25,7 @@ import styles from '../ProductDetail.module.css';
 import { useLanguage } from '@/context/LanguageContext';
 import EmailGatedDownloadButton from '@/components/EmailGatedDownloadButton';
 
-export default function ASL20PageClient()
+export default function ASL40PageClient()
 {
     const { language } = useLanguage();
     const t = language === 'tr'
@@ -207,7 +207,7 @@ export default function ASL20PageClient()
                                 <EmailGatedDownloadButton
                                     language={language}
                                     fileUrl="/products/asl40-datasheet.png"
-                                    productKey="asl20"
+                                    productKey="asl40"
                                     productName="ASL-40"
                                     fileName="argos-asl40-datasheet.png"
                                     className={styles.btnSecondary}
