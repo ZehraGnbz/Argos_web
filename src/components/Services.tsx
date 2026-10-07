@@ -74,7 +74,6 @@ const services = {
             title: 'Electro-Optical System Design',
             icon: Eye,
             items: [
-                'Laser Proximity Burst Systems',
                 'Target Detection and Tracking Systems',
                 'Laser Spot Tracking',
                 'Rangefinders and Measurement Units',
