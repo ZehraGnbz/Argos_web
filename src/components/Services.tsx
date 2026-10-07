@@ -32,7 +32,6 @@ const services = {
             title: 'Elektro-Optik Sistem Tasarımı',
             icon: Eye,
             items: [
-                'Laser Proximity Burst Sistemleri',
                 'Hedef Tespit ve Takip Sistemleri',
                 'Laser Spot Tracking',
                 'Rangefinder ve Ölçüm Üniteleri',

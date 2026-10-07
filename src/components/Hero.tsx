@@ -17,7 +17,7 @@ const content = {
     en: {
         titleStart: 'Electro-Optical',
         titleHighlight: ' System Solutions',
-        subtitle: 'We make a difference through our Laser Proximity, Seeker, and Rangefinder Systems, as well as Advanced Defence Technologies.',
+        subtitle: 'We make a difference through our Seeker and Rangefinder Systems as well as Advanced Defence Technologies.',
         ctaPrimary: 'Explore Our Products',
         ctaSecondary: 'Get in Touch',
         scroll: 'Start Exploring',
